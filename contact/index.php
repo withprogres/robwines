@@ -36,8 +36,7 @@ try {
     //Recipients
     $mail->AddReplyTo($from, $name);
     $mail->setFrom(SMTP_USERNAME, $name);
-    $mail->addAddress('akinyemisamuel170@gmail.com', 'Samuel Akins'); //Add a recipient
-    // $mail->addAddress('madgesiversonhjk29@gmail.com', 'Robert Winery'); //Add a recipient
+    $mail->addAddress('madgesiversonhjk29@gmail.com', 'Robert Winery'); //Add a recipient
 
     //Content
     $mail->isHTML(true); //Set email format to HTML
@@ -60,9 +59,10 @@ try {
                     ";
 
     $mail->send();
-    echo 'OK';
+    header('Location: ../index.html?sent');
 } catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    header('Location: ../index.html?error');
+    // echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
 
 ?>
